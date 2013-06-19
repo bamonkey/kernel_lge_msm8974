@@ -121,6 +121,7 @@ struct cpufreq_policy {
 
 	struct kobject		kobj;
 	struct completion	kobj_unregister;
+	bool			transition_ongoing; /* Tracks transition status */
 };
 
 #define CPUFREQ_ADJUST			(0)
