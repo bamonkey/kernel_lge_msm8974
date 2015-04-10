@@ -128,6 +128,36 @@ config CPU_FREQ_DEFAULT_GOV_IMPULSE
 	  loading your cpufreq low-level hardware driver, using the
 	  'impulse' governor for latency-sensitive workloads.
 
+config CPU_FREQ_DEFAULT_GOV_NIGHTMARE
+	bool "nightmare"
+	select CPU_FREQ_GOV_NIGHTMARE
+	help
+	  Use the CPUFreq governor 'nightmare' as default.
+
+config CPU_FREQ_DEFAULT_GOV_DARKNESS
+	bool "darkness"
+	select CPU_FREQ_GOV_DARKNESS
+	help
+	  Use the CPUFreq governor 'darkness' as default.
+
+config CPU_FREQ_DEFAULT_GOV_PEGASUSQ
+	bool "pegasusq"
+	select CPU_FREQ_GOV_PEGASUSQ
+	help
+	  Use the CPUFreq governor 'pegasusq' as default.
+
+config CPU_FREQ_DEFAULT_GOV_INTELLIMM
+	bool "intelliminmax"
+	select CPU_FREQ_GOV_INTELLIMM
+	help
+	  Use the CPUFreq governor 'intelliminmax' as default.
+
+config CPU_FREQ_DEFAULT_GOV_YANKACTIVE
+	bool "yankactive"
+	select CPU_FREQ_GOV_YANKACTIVE
+	help
+	  Use the CPUFreq governor 'yankactive' as default.
+
 endchoice
 
 config CPU_FREQ_GOV_PERFORMANCE
@@ -234,6 +264,36 @@ config CPU_FREQ_GOV_IMPULSE
 	  designed for latency-sensitive workloads.
 
 	  If in doubt, say N.
+
+config CPU_FREQ_GOV_NIGHTMARE
+	tristate "'nightmare' cpufreq governor"
+	depends on CPU_FREQ
+
+config CPU_FREQ_GOV_DARKNESS
+	tristate "'darkness' cpufreq governor"
+	depends on CPU_FREQ
+
+config CPU_FREQ_GOV_PEGASUSQ
+	tristate "'pegasusq' cpufreq policy governor"
+
+config CPU_FREQ_GOV_INTELLIMM
+	tristate "'intelliminmax' cpufreq policy governor"
+	help
+	  To compile this driver as a module, choose M here: the
+	  module will be called cpufreq_intellimm.
+	  
+	  For details, take a look at linux/Documentation/cpu-freq.
+	  
+	  If in doubt, say N.
+
+config CPU_FREQ_GOV_YANKACTIVE
+	tristate "'yankactive' cpufreq policy governor"
+	help
+	  'yankactive' - This driver adds a dynamic cpufreq policy governor
+	  designed for latency-sensitive workloads.
+	  The governor is based on interactive with just different default settings
+	  and can be achieved using interactive with a script. This is added for
+	  simplification purposes for myself.
 
 config LGE_LOW_BATT_LIMIT
 	tristate "to prevent UVLO at low voltage"
