@@ -33,6 +33,19 @@ ifeq ($(CONFIG_MMU),)
 MMUEXT		:= -nommu
 endif
 
+FAST_LANE_ARCH_OPT := -mtune=cortex-a15 -mfpu=neon-vfpv4 -funsafe-math-optimizations
+FAST_LANE_OPT_FLAGS := $(call cc-option,$(FAST_LANE_ARCH_OPT),-march=armv7-a) \
+	-g0 \
+	-DNDEBUG \
+	-fomit-frame-pointer \
+	-fmodulo-sched \
+	-fmodulo-sched-allow-regmoves \
+	-fivopts
+
+ifeq ($(CONFIG_FAST_LANE_ARM),y)
+KBUILD_CFLAGS	+= $(FAST_LANE_OPT_FLAGS)
+endif
+
 ifeq ($(CONFIG_FRAME_POINTER),y)
 KBUILD_CFLAGS	+=-fno-omit-frame-pointer -mapcs -mno-sched-prolog
 endif
