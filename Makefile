@@ -247,8 +247,13 @@ CONFIG_SHELL := $(shell if [ -x "$$BASH" ]; then echo $$BASH; \
 
 HOSTCC       = $(CCACHE) gcc
 HOSTCXX      = $(CCACHE) g++
+<<<<<<< HEAD
 HOSTCFLAGS   = -Wall -Wmissing-prototypes -Wstrict-prototypes -O3 -fomit-frame-pointer -fgcse-las
 HOSTCXXFLAGS = -O3 -fgcse-las
+=======
+HOSTCFLAGS   = -Wall -Wmissing-prototypes -Wstrict-prototypes -O2 -fomit-frame-pointer -std=gnu89
+HOSTCXXFLAGS = -O2
+>>>>>>> ca3b988... Makefile: use the gnu89 standard explicitly
 
 # Decide whether to build built-in, modular, or both.
 # Normally, just do built-in.
@@ -397,6 +402,7 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -Werror-implicit-function-declaration \
 		   -Wno-format-security \
 		   -fno-delete-null-pointer-checks \
+		   -std=gnu89 \
 		   $(FAST_LANE_OPT_FLAGS)
 KBUILD_AFLAGS_KERNEL := $(FAST_LANE_OPT_FLAGS)
 KBUILD_CFLAGS_KERNEL := $(FAST_LANE_OPT_FLAGS)
